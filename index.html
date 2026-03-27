@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Modern Hava Durumu Uygulaması - Şehir bazlı anlık hava durumunu görüntüleyin." />
+  <title>Hava Durumu 🌤</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-particles" id="bgParticles"></div>
+  <div class="container">
+    <div class="search-section">
+      <h1 class="app-title">
+        <span class="title-icon">🌍</span>
+        Hava Durumu
+      </h1>
+      <div class="search-bar">
+        <input type="text" id="cityInput" class="city-input" placeholder="Şehir ara... (ör: İstanbul)" autocomplete="off" />
+        <button id="searchBtn" class="search-btn" aria-label="Ara">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="loader-wrapper" id="loader">
+      <div class="loader-ring"></div>
+      <p class="loader-text">Hava durumu alınıyor...</p>
+    </div>
+    <div class="error-card" id="errorCard">
+      <div class="error-icon">⚠️</div>
+      <p class="error-title" id="errorTitle">Şehir Bulunamadı</p>
+      <p class="error-msg" id="errorMsg">Lütfen geçerli bir şehir adı girin ve tekrar deneyin.</p>
+    </div>
+    <div class="weather-card" id="weatherCard">
+      <div class="location-row">
+        <div class="location-info">
+          <h2 class="city-name" id="cityName">--</h2>
+          <p class="date-country">
+            <span id="countryCode">--</span> &bull;
+            <span id="currentDate">--</span>
+          </p>
+        </div>
+        <div class="weather-icon-wrapper">
+          <img id="weatherIcon" src="" alt="Hava Durumu İkonu" class="weather-icon" />
+        </div>
+      </div>
+      <div class="temp-section">
+        <div class="temperature">
+          <span id="tempValue">--</span>
+          <sup class="degree-symbol">°C</sup>
+        </div>
+        <p class="weather-desc" id="weatherDesc">--</p>
+        <p class="feels-like">
+          Hissedilen: <strong id="feelsLike">--</strong>°C
+        </p>
+      </div>
+      <div class="divider"></div>
+      <div class="details-grid">
+        <div class="detail-item">
+          <div class="detail-icon-wrap">💧</div>
+          <div class="detail-info">
+            <span class="detail-label">Nem</span>
+            <span class="detail-value" id="humidity">--%</span>
+          </div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-icon-wrap">💨</div>
+          <div class="detail-info">
+            <span class="detail-label">Rüzgar</span>
+            <span class="detail-value" id="windSpeed">-- km/s</span>
+          </div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-icon-wrap">🌡️</div>
+          <div class="detail-info">
+            <span class="detail-label">Basınç</span>
+            <span class="detail-value" id="pressure">-- hPa</span>
+          </div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-icon-wrap">👁️</div>
+          <div class="detail-info">
+            <span class="detail-label">Görüş</span>
+            <span class="detail-value" id="visibility">-- km</span>
+          </div>
+        </div>
+      </div>
+      <div class="sun-row">
+        <div class="sun-item">
+          <span class="sun-icon">🌅</span>
+          <div>
+            <span class="sun-label">Gün Doğumu</span>
+            <span class="sun-time" id="sunrise">--:--</span>
+          </div>
+        </div>
+        <div class="sun-item">
+          <span class="sun-icon">🌇</span>
+          <div>
+            <span class="sun-label">Gün Batımı</span>
+            <span class="sun-time" id="sunset">--:--</span>
+          </div>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <p class="forecast-title">5 Günlük Tahmin</p>
+      <div class="forecast-list" id="forecastList"></div>
+    </div>
+    <p class="footer-text">Veriler OpenWeatherMap tarafından sağlanmaktadır</p>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
