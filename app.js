@@ -1,6 +1,4 @@
-const API_KEY = "d147ed13a674c0428bff753999d0f247";
-const API_BASE = "https://api.openweathermap.org/data/2.5/weather";
-const FORECAST_BASE = "https://api.openweathermap.org/data/2.5/forecast";
+const PROXY_URL = "https://weather-backend-xi5v.onrender.com";
 
 const cityInput = document.getElementById("cityInput");
 const searchBtn = document.getElementById("searchBtn");
@@ -84,8 +82,8 @@ async function fetchWeather(city) {
 
     showSection("loader");
 
-    const currentUrl = `${API_BASE}?q=${encodeURIComponent(trimmedCity)}&appid=${API_KEY}&units=metric&lang=tr`;
-    const forecastUrl = `${FORECAST_BASE}?q=${encodeURIComponent(trimmedCity)}&appid=${API_KEY}&units=metric&lang=tr`;
+    const currentUrl = `${PROXY_URL}/weather?city=${encodeURIComponent(trimmedCity)}`;
+    const forecastUrl = `${PROXY_URL}/forecast?city=${encodeURIComponent(trimmedCity)}`;
 
     try {
         const [currentRes, forecastRes] = await Promise.all([
